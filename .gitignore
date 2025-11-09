@@ -1,0 +1,80 @@
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+.history/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+*.egg-info/
+.eggs/
+build/
+dist/
+.coverage
+.pytest_cache/
+.mypy_cache/
+.cache/
+*.log
+
+# =========================
+# Ambientes virtuais
+# =========================
+.venv_gnn/
+.venv/
+venv/
+env/
+
+# =========================
+# Jupyter / Colab
+# =========================
+.ipynb_checkpoints/
+.colab/
+# Se montar Drive no Colab, ignore a raiz montada localmente
+/content/
+# Tokens/creds locais
+.kaggle/
+kaggle.json
+
+# =========================
+# Dados & artefatos pesados
+# (mantenha apenas marcadores/README)
+# =========================
+data/
+!data/.gitkeep
+!data/README.md
+
+# Se quiser versionar somente configs/splits pequenos, descomente:
+# !data/processed/splits/*.csv
+
+# =========================
+# Modelos / Embeddings / Logs
+# =========================
+models/
+!models/.gitkeep
+data/embeddings/
+!data/embeddings/.gitkeep
+checkpoints/
+lightning_logs/
+runs/
+*.pt
+*.pth
+*.ckpt
+
+# =========================
+# Configs sensíveis
+# =========================
+.env
+*.env
+*.secret
+*.bak
+*.tmp

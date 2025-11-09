@@ -1,0 +1,36 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+--find-links https://data.pyg.org/whl/torch-2.3.1+cpu.html
+
+# Base científica (libere para o mais novo compatível com Py3.11)
+numpy>=2
+scipy>=1.14
+
+# PyTorch stack (fixado entre si)
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+
+# PyG (faixa compatível com torch 2.3.x)
+torch-geometric>=2.6,<2.7
+# Extensões (deixe sem versão para pegar a mais recente compatível do índice acima)
+torch_scatter
+torch_sparse
+torch_cluster
+torch_spline_conv
+
+# Sem pins para pegar as versões mais novas
+networkx
+scikit-learn
+ipykernel
+ipython
+jupyter_client
+jupyter_core
+pillow
+tqdm
+requests
+python-dateutil
+pandas
+pyyaml
+kagglehub
+matplotlib
+tabulate

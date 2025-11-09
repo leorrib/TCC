@@ -1,0 +1,48 @@
+# src/config/base.yaml
+
+# Experiment metadata
+experiment_name: "elliptic_gnn_baseline"
+description: "Baseline model using GCN + tabular fusion"
+
+general:
+  seed: 42
+
+splits:
+  train_upper: 34
+  test1_lower: 35
+  test1_upper: 42
+  test2_lower: 43
+
+# Directories
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  models: "artifacts/models"
+  logs: "artifacts/logs"
+
+model:
+  gin:
+    hidden_dim: 128
+    layers: 2
+    dropout: 0.0
+    proj_dim: 128
+
+pretrain:
+  max_train_step: 34
+  drop_p_edge: 0.3
+  drop_p_feat: 0.3
+  k: 15
+  knn_batch_size: 4096
+  tau: 0.5
+  lambda_mix: 0.5
+  anchor_bs: 2048
+  target_bs: 32768
+  epochs: 20
+  lr: 0.001
+  weight_decay: 0.0005
+  patience: 999
+
+paths:
+  data_processed: "data/processed"
+  models: "models/gin"
+  embeddings: "data/embeddings/gin"
