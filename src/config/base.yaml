@@ -42,7 +42,7 @@ pretrain:
   weight_decay: 0.0005
   patience: 999
 
-paths:
-  data_processed: "data/processed"
-  models: "models/gin"
-  embeddings: "data/embeddings/gin"
+# paths:
+#   data_processed: "data/processed"
+#   models: "models/gin"
+#   embeddings: "data/embeddings/gin"

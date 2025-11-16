@@ -1,12 +1,12 @@
---extra-index-url https://download.pytorch.org/whl/cpu
---find-links https://data.pyg.org/whl/torch-2.8.0+cpu.html
+--extra-index-url https://download.pytorch.org/whl/cu126
+--find-links https://data.pyg.org/whl/torch-2.8.0+cu126.html
 
 numpy>=2
 scipy>=1.14
 
-torch==2.8.0
-torchvision==0.23.0
-torchaudio==2.8.0
+torch==2.8.0+cu126
+torchvision==0.23.0+cu126
+torchaudio==2.8.0+cu126
 
 torch-geometric==2.7.0
 torch_scatter
