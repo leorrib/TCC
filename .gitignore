@@ -59,7 +59,6 @@ data/
 # =========================
 # Modelos / Embeddings / Logs
 # =========================
-models/
 !models/.gitkeep
 data/embeddings/
 !data/embeddings/.gitkeep
