@@ -28,11 +28,22 @@ class DataSplitter:
     # PyG Graph Handling
     # ==========================================================
     def load_graphs(self, filename: str = "elliptic_graphs.pt"):
-        """Loads pre-built PyG graphs from disk."""
+        """Loads pre-built PyG graphs from disk (PyTorch>=2.6 safe load)."""
         path = self.data_processed / filename
         if not path.exists():
             raise FileNotFoundError(f"File not found: {path}")
-        self.graphs = torch.load(path)
+
+        # 👇 allowlist das classes do PyG usadas no pickle
+        from torch.serialization import add_safe_globals
+        from torch_geometric.data import Data
+        import torch_geometric
+        try:
+            add_safe_globals([Data, torch_geometric.data.data.DataEdgeAttr])
+        except Exception:
+            pass  # ok se já estiver registrado
+
+        # 👇 carregar como antes (objetos completos, não só pesos)
+        self.graphs = torch.load(path, weights_only=False, map_location="cpu")
         print(f"✅ Loaded {len(self.graphs)} PyG graphs from {path}")
         return self.graphs
 
