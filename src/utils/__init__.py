@@ -3,6 +3,7 @@ from .config_loader import ConfigLoader
 from .data_manager import DataManager
 from .graph_builder import GraphBuilder
 from .data_splitter import DataSplitter
+from .visualization import Visualization
 
 __all__ = [
     "EnvironmentSetup",
@@ -10,4 +11,5 @@ __all__ = [
     "DataManager",
     "GraphBuilder",
     "DataSplitter",
+    "Visualization",
 ]

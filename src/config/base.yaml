@@ -19,6 +19,7 @@ paths:
   data_processed: "data/processed"
   models: "artifacts/models"
   logs: "artifacts/logs"
+  artifacts: data/artifacts
 
 model:
   gin:
@@ -27,6 +28,7 @@ model:
     dropout: 0.0
     proj_dim: 128
 
+# GCPAL pretraining settings
 pretrain:
   max_train_step: 34
   drop_p_edge: 0.3
@@ -42,7 +44,61 @@ pretrain:
   weight_decay: 0.0005
   patience: 999
 
+results:
+  skipgcn_file: "skipgcn_results.json"
 # paths:
 #   data_processed: "data/processed"
 #   models: "models/gin"
 #   embeddings: "data/embeddings/gin"
+
+baselines:
+  rf:
+    n_estimators: 50
+    max_features: 50
+    class_weight: balanced
+    n_jobs: -1
+    # opcionais:
+    # max_depth: null
+    # min_samples_split: 2
+    # min_samples_leaf: 1
+
+  logreg:
+    solver: saga
+    penalty: l2
+    C: 1.0
+    max_iter: 2000
+    n_jobs: -1
+    class_weight: balanced
+
+  mlp:
+    hidden: 50
+    dropout: 0.5
+    lr: 0.001
+    epochs: 200
+    class_weights: [0.3, 0.7]
+
+models:
+  ocgnn:
+    common:
+      lr: 0.001                # SGD per paper
+      epochs_min: 100
+      epochs_max: 1000
+      patience: 50             # early stopping
+      center_warmup_epochs: 5  # aquece o centro
+      wd_start: 0.005          # 5e-3
+      wd_end: 0.000005         # 5e-6
+      dropout: 0.5
+      seeds: 3                 # paper usa 3 seeds
+      val_period: "pre"        # usar test1 (35–42) como validação para early stop (AUC)
+      normal_label: 0          # classe normal (licit)
+    ocgat:
+      hidden: 33
+      heads: 8
+      layers: 4
+    ocgcn:
+      hidden: 32
+      layers: 2
+    ocgraphsage:
+      hidden: 32
+      layers: 2
+      agg: "mean"              # pooling padrão
